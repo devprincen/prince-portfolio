@@ -63,7 +63,7 @@ body {
     color: white;
 }
 
-body.sidebar.collapsed .sidebar-open-btn {
+body.sidebar-collapsed .sidebar-open-btn {
     display: flex;
 }
 
@@ -81,7 +81,7 @@ body.sidebar.collapsed .sidebar-open-btn {
     align-items: center;
     padding: 2.5rem 1.5rem 2rem;
     z-index: 100;
-    box-shadow: 4px 0 24px rgba(106, 99, 255, 0.04);
+    box-shadow: 4px 0 24px rgba(108, 99, 255, 0.04);
     transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -89,7 +89,7 @@ body.sidebar-collapsed .sidebar {
     transform: translateX(-100%);
 }
 
-.body.sidebar.collapsed main {
+body.sidebar-collapsed main {
     margin-left: 0;
 }
 
@@ -102,7 +102,7 @@ body.sidebar-collapsed .sidebar {
     border-radius: 8px;
     background: var(--bg);
     border: 1.5px solid var(--border);
-    color: var(--test-muted);
+    color: var(--text-muted);
     font-size: 1rem;
     cursor: pointer;
     display: flex;
@@ -113,15 +113,15 @@ body.sidebar-collapsed .sidebar {
 
 .sidebar-close-btn:hover {
     background: #ffecef;
-    color: var(--accent);
-    border-radius: var(--accent2);
+    color: var(--accent2);
+    border-color: var(--accent2);
 }
 
 .sidebar-overlay {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0.35);
+    background: rgba(0,0,0,0.35);
     z-index: 99;
     backdrop-filter: blur(2px);
 }
@@ -134,8 +134,8 @@ body.sidebar-collapsed .sidebar {
     width: 90px;
     height: 90px;
     border-radius: 50%;
-    display: flex;
     background: linear-gradient(135deg, var(--accent), var(--accent2));
+    display: flex;
     align-items: center;
     justify-content: center;
     font-size: 2rem;
@@ -286,6 +286,7 @@ section {
     font-size: 0.85rem;
     color: var(--accent);
     margin-bottom: 1rem;
+    display: flex;
     align-items: center;
     gap: 8px;
 }
@@ -406,7 +407,7 @@ section {
     width: 230px;
     height: 230px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--accent) 0%, var(--accent2)100%);
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -458,7 +459,7 @@ section {
 }
 
 .sec-title {
-    font-family: clamp(1.8rem, 3vm, 2.6rem);
+    font-size: clamp(1.8rem, 3vm, 2.6rem);
     font-weight: 800;
     letter-spacing: -0.03em;
     position: relative;
@@ -518,7 +519,7 @@ section {
 }
 
 .edu-card:hover {
-    box-shadow: var(--shadow-hover0);
+    box-shadow: var(--shadow-hover);
     transform: translateY(-2px);
 }
 
@@ -576,7 +577,7 @@ section {
     font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.1rem;
+    letter-spacing: 0.1em;
     margin-bottom: 1rem;
 }
 
@@ -603,7 +604,7 @@ section {
 .chip:hover {
     background: var(--accent-light);
     color: var(--accent);
-    border-radius: var(--accent);
+    border-color: var(--accent);
 }
 
 .chip i {
@@ -611,14 +612,19 @@ section {
     color: var(--accent);
 }
 
+/*skill*/
 #skills {
     background: var(--white);
 }
 
-/*skill*/
-
 .skills-center {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.skills-grid{
+    display: grid;
     grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
     gap: 1.2rem;
     width: 100%;
@@ -629,7 +635,7 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
     padding: 1.5rem 1rem;
     background: var(--bg);
     border: 1px solid var(--border);
@@ -659,7 +665,407 @@ section {
     font-size: 0.72rem;
     font-weight: 600;
     color: var(--text-muted);
+    text-align: center;
     
 }
 
-/* */
+.skill-item:hover .skill-name { color: var(--accent); }
+
+.ic-html    { background: #fff4ee; color: #e34f26; }
+.ic-css     { background: #eef4ff; color: #264de4; }
+.ic-js      { background: #fffbe6; color: #b8860b; }
+.ic-react   { background: #e6f9ff; color: #087ea4; }
+.ic-java    { background: #fff1ee; color: #ea2d2e; }
+.ic-spring  { background: #edfaee; color: #6db33f; }
+.ic-node    { background: #edfaee; color: #3c873a; }
+.ic-python  { background: #eef4ff; color: #3572a5; }
+.ic-php     { background: #f0eeff; color: #777bb4; }
+.ic-mysql   { background: #fff4ee; color: #00758f; }
+.ic-git     { background: #fff4ee; color: #f05032; }
+.ic-gh      { background: #f0f0f0; color: #24292e; }
+.ic-api     { background: #fffbe6; color: #b8860b; }
+.ic-postman { background: #fff4ee; color: #ef5b25; }
+
+#projects {
+    background: var(--bg);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.project-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.25s;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.project-card:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-4px);
+}
+
+.project-card:hover::before { opacity: 1; }
+
+.project-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: var(--accent-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    color: var(--accent);
+    margin-bottom: 1.2rem;
+}
+
+.project-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.6rem;
+}
+
+.project-desc {
+    font-size: 0.82rem;
+    line-height: 1.75;
+    color: var(--text-muted);
+    flex: 1;
+    margin-bottom: 1.5rem;
+}
+
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 1.5rem;
+}
+
+.tech-tag {
+    padding: 3px 10px;
+    background: var(--accent-light);
+    color: var(--accent);
+    font-size: 0.68rem;
+    font-weight: 600;
+    border-radius: 20px;
+}
+
+.project-links {
+    display: flex;
+    gap: 12px;
+}
+
+.proj-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: none;
+    padding: 7px 16px;
+    border: 1.5px solid var(--accent);
+    border-radius: 50px;
+    transition: all 0.2s;
+}
+
+.proj-link:hover {
+    background: var(--accent);
+    color: white;
+}
+
+.proj-link i { font-size: 0.8rem; }
+
+/* ══════════════════════════════════════════
+    CONTACT — COLUMN LAYOUT
+    Form on top, Social cards below
+══════════════════════════════════════════ */
+
+#contact {
+    background: var(--accent-light);
+}
+
+/* Single column wrapper */
+.contact-column {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    max-width: 860px;
+    width: 100%;
+}
+
+/* Form card — two-column inner grid for fields */
+.contact-form-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2rem;
+}
+
+.contact-form-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+/* Inner 2-column grid for Name + Email side by side */
+.contact-form-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Full-width fields (textarea + button) */
+.form-group--full {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-size: 0.88rem;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    resize: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.1);
+}
+ 
+.form-group textarea {
+    min-height: 120px;
+}
+ 
+.btn-submit {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-family: var(--font);
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.25s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 4px 16px rgba(108, 99, 255, 0.25);
+}
+ 
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(108, 99, 255, 0.35);
+}
+ 
+/* Social / Connect section */
+.contact-info {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2rem;
+}
+ 
+.contact-info h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+}
+ 
+.contact-info > p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+ 
+/* Social cards — 2-column grid */
+.social-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 1.5rem;
+}
+ 
+.social-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 18px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 500;
+    font-size: 0.88rem;
+    transition: all 0.2s;
+}
+ 
+.social-card:hover {
+    box-shadow: var(--shadow);
+    transform: translateX(4px);
+    border-color: var(--accent);
+    color: var(--accent);
+}
+ 
+.social-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+ 
+.si-email     { background: #fff1ee; color: #ea4335; }
+.si-github    { background: #f0f0f0; color: #24292e; }
+.si-linkedin  { background: #e8f4ff; color: #0077b5; }
+.si-instagram { background: #fce4ff; color: #c13584; }
+ 
+.social-card small {
+    display: block;
+    font-size: 0.68rem;
+    color: var(--text-light);
+    font-weight: 400;
+}
+ 
+.thank-you {
+    padding: 1.5rem;
+    background: linear-gradient(135deg, rgba(108, 99, 255, 0.05), rgba(247, 85, 107, 0.05));
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    text-align: center;
+}
+ 
+.thank-you span {
+    font-size: 1.5rem;
+    display: block;
+    margin-bottom: 8px;
+}
+ 
+.thank-you p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    margin-bottom: 0;
+}
+ 
+/* REVEAL */
+.reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+ 
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+ 
+/* ══════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════ */
+@media (max-width: 960px) {
+    /* On mobile, sidebar starts hidden */
+    .sidebar {
+        transform: translateX(-100%);
+    }
+ 
+    /* When opened on mobile via button */
+    .sidebar.mobile-open {
+        transform: translateX(0);
+    }
+ 
+    /* Always show the open button on mobile */
+    .sidebar-open-btn {
+        display: flex !important;
+    }
+ 
+    main {
+        margin-left: 0 !important;
+    }
+ 
+    section {
+        padding: 4rem 2rem;
+    }
+ 
+    .home-inner {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+ 
+    .home-left {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+ 
+    .home-greeting::before { display: none; }
+ 
+    .about-grid        { grid-template-columns: 1fr; }
+    .projects-grid     { grid-template-columns: 1fr; }
+ 
+    /* Contact already column, just make social cards single-col */
+    .social-cards      { grid-template-columns: 1fr; }
+    .contact-form-inner { grid-template-columns: 1fr; }
+ 
+    .photo-frame {
+        width: 220px;
+        height: 250px;
+    }
+ 
+    .photo-inner {
+        width: 170px;
+        height: 170px;
+        font-size: 3.5rem;
+    }
+ 
+    .badge-1, .badge-2 { display: none; }
+}

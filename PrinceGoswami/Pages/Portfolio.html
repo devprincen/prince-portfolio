@@ -8,14 +8,22 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="Porfolio.css">
+    <link rel="stylesheet" href="Portfolio.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     </head>
 
     <body>
+
         <!-- SIDEBAR TOGGLE BUTTON (visible when sidebar is closed) -->
+        <button class="sidebar-open-btn" id="sidebarOpenBtn" title="Open Menu">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <!-- SIDEBAR -->
         <aside class="sidebar" id="sidebar">
-            <button class="sidebar-open-btn" id="sidebarCloseBtn" title="Close menu">
+            <!-- X Close Button -->
+            <button class="sidebar-close-btn" id="sidebarCloseBtn" title="Close menu">
                 <i class="fa-solid fa-xmark"></i>
             </button>
 
@@ -27,15 +35,14 @@
             <nav>
                 <ul>
                     <li><a href="#home" class="active"><i class="fa-solid fa-house"></i> Home</a></li>
-                    <li><a href="#about" class="fa-solid fa-house"><i> About</i></a></li>
-                    <li><a href="#skills" class="fa-solid fa-house"><i> Skills</i></a></li>
-                    <li><a href="#project" class="fa-solid fa-house"><i> Project</i></a></li>
-                    <li><a href="#contact" class="fa-solid fa-house"><i> Contact</i></a></li>
-
+                    <li><a href="#about"><i class="fa-solid fa-user"></i> About</a></li>
+                    <li><a href="#skills"><i class="fa-solid fa-code"></i> Skills</a></li>
+                    <li><a href="#projects"><i class="fa-solid fa-diagram-project"></i> Project</a></li>
+                    <li><a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a></li>
                 </ul>
             </nav>
 
-            <div class="sidebar-footer">@ 2025 Prince Goswami</div>
+            <div class="sidebar-footer">© 2025 Prince Goswami</div>
         </aside>
 
         <div class="sidebar-overlay" id="sidebarOverlay"></div>
@@ -49,7 +56,7 @@
                 <div class="home-inner">
 
                     <div class="home-left reveal">
-                        <div class="home-greeting">--PRINCE</div>
+                        <div class="home-greeting">PRINCE</div>
                         <h1 class="home-name">Prince Goswami</h1>
                         <div class="home-title">
                             <span>BCA Student</span>
@@ -64,7 +71,7 @@
                             one line of code at a time. 🚀
                         </p>
                         <div class="home-btns">
-                            <a href="#projects" class="btn btn-filled"><i class="fa-solid fa-rocket">View Project</i>
+                            <a href="#projects" class="btn btn-filled"><i class="fa-solid fa-rocket"></i> View Project
                             </a>
                             <a href="Prince_Goswami_Final_Resume.pdf" download class="btn btn-rocket">
                                 <i class="fa-solid fa-download"></i> Resume
@@ -75,14 +82,14 @@
                     <div class="home-right reveal">
                         <div class="photo-frame">
                             <div class="photo-inner">
-                                🧑‍💻
+                            <img src="JP.jpeg" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
                             </div>
                         </div>
                         <div class="float-badge badge-1">
                             <i class="fa-solid fa-location-dot"></i> Vadodara, Gujarat
                         </div>
                         <div class="float-badge badge-2">
-                            <i class="fa-solid fa-gradution-cap"></i> BCA 4th semester
+                            <i class="fa-solid fa-graduation-cap"></i> BCA 4th semester
                         </div>
                     </div>
 
@@ -134,12 +141,12 @@
 
                         <div class="edu-card">
                             <span class="edu-badge" style="background: #fce4ff; color: #9c27b0;">Completed</span>
-                            <div class="edu-degree">!2th Standard</div>
+                            <div class="edu-degree">12th Standard</div>
                             <div class="edu-school">
                                 <i class="fa-solid fa-school" style="color: var(--accent); margin-right: 6px;"></i>
                                 Rajasthan Board of Secondary Education (RBSE)
                             </div>
-                            <div class="edu-year">Passes Out - Rajasthan</div>
+                            <div class="edu-year">Passed Out - Rajasthan</div>
                         </div>
                         <div class="about-interests">
                             <div class="interests-title">interests & Hobbies</div>
@@ -156,19 +163,20 @@
                     </div>
                 </div>
             </section>
+
             <!-- SKILLS -->
             <section id="skills">
                 <div class="sec-header reveal" style="text-align: center;">
                     <div class="sec-tag" style="justify-content: center;">technologies</div>
                     <h2 class="sec-title">My Skills</h2>
-                    <p class="sec-sub">Technologies I work and an continously improving</p>
+                    <p class="sec-sub">Technologies I work with and am continuously improving</p>
                 </div>
 
                 <div class="skills-center">
                     <div class="skills-grid reveal">
 
                         <div class="skill-item">
-                            <div class="skill-icon skill-html"><i class="fa-brands fa-html5"></i></div>
+                            <div class="skill-icon ic-html"><i class="fa-brands fa-html5"></i></div>
                             <span class="skill-name">HTML5</span>
                         </div>
                         <div class="skill-item">
@@ -230,14 +238,16 @@
                             <div class="skill-icon ic-gh"><i class="fa-brands fa-github"></i></div>
                             <span class="skill-name">GitHub</span>
                         </div>
+                        
                     </div>
+                </div>
             </section>
 
             <!-- PROJECTS -->
             <section id="projects">
                 <div class="sec-header reveal">
                     <div class="sec-tag">my work</div>
-                    <h2 class="sec-title"></h2>
+                    <h2 class="sec-title">Projects</h2>
                     <p class="sec-sub">Built small projects for learning, including a contact store system (Java &
                         Spring Boot), a login system, and an ATM system in C</p>
                 </div>
@@ -254,9 +264,9 @@
                             contact details like name and email. The data is stored in rows based on ID. This project
                             was created for learning and improving my skills.</p>
                         <div class="project-tech">
-                            <span class="tech-tag">HTML</span>
-                            <span class="tech-tag">CSS</span>
-                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">JAVA</span>
+                            <span class="tech-tag">Spring-Boot</span>
+                            <span class="tech-tag">MySql</span>
                         </div>
                         <div class="project-links">
                             <a href="https://github.com/devprincen/contact-store-system" target="_blank" class="proj-link">
@@ -271,7 +281,7 @@
                     <!--Project2-->
                     <div class="project-card reveal">
                         <div class="project-icon" style="background: #edfaee; color: #3c873a;">
-                            <i class="fa-brand fa-java"></i>
+                            <i class="fa-brands fa-java"></i>
                         </div>
                         <h3 class="project-title">Student Records Manager</h3>
                         <p class="project-desc">
@@ -287,7 +297,7 @@
                         </div>
                         <div class="project-links">
                             <a href="https://github.com/devprincen/student-record-manager" target="_blank" class="proj-link">
-                                <i class="fa-brand fa-github"></i> Github
+                                <i class="fa-brands fa-github"></i> Github
                             </a>
                         </div>
                     </div>
@@ -299,7 +309,11 @@
                     </div>
                     <h3 class="project-title">Project Name 3</h3>
                     <p class="project-desc">
-                        i create after some time this poroject
+                            This is a Contact Store System that allows users to store data in a
+                            table. It is built using Java, Spring Boot, and React with APIs, and uses JWT
+                            authentication. Users log in with predefined credentials, receive a token, and can add
+                            contact details like name and email. The data is stored in rows based on ID. This project
+                            was created for learning and improving my skills.
                     </p>
                     <div class="project-tech">
                         <span class="tech-tag">React</span>
@@ -354,16 +368,16 @@
 
                     <!--Social-->
                     <div class="contact-info reveal">
-                        <h3>Contact With Me</h3>
+                        <h3>Connect With Me</h3>
                         <p>
                             Feel free to reach out via email or connect with me on social media.
                             I'm always open to new opportunities and collaborations!
                         </p>
 
-                        <div class="social-card">
+                        <div class="social-cards">
 
                             <a href="mailto:pg6907198@gmail.com" class="social-card">
-                                <div class="social-icon si-email"><i class="fa-solid fa-enveloper"></i></div>
+                                <div class="social-icon si-email"><i class="fa-solid fa-envelope"></i></div>
                                 <div>
                                     pg6907198@gmail.com
                                     <small>Click to email me directly</small>
@@ -371,13 +385,14 @@
                             </a>
 
                             <a href="https://github.com/devprincen" target="_blank" class="social-card">
+                                <div class="social-icon si-github"><i class="fa-brands fa-github"></i></div>
                                 <div>
                                     GitHub
                                     <small>View my code & repositories</small>
                                 </div>
                             </a>
 
-                            <a href="https://www.linkedin.com/in/prince-goswami-a61375335/" target="_blank" class="soical-card">
+                            <a href="https://www.linkedin.com/in/prince-goswami-a61375335/" target="_blank" class="social-card">
                                 <div class="social-icon si-linkedin"><i class="fa-brands fa-linkedin"></i></div>
                                 <div>
                                     Linkedin
@@ -385,8 +400,8 @@
                                 </div>
                             </a>
 
-                            <a href="https://instagram.com/YOURUSERNAME" target="_blank" class="social-card">
-                                <div class="social-icon si instagram"><i class="fa-brands fa-instagram"></i></div>
+                            <a href="https://www.instagram.com/prince0757_?igsh=eWRpYXp6czhiN2l2" target="_blank" class="social-card">
+                                <div class="social-icon si-instagram"><i class="fa-brands fa-instagram"></i></div>
                                 <div>
                                     Instagram
                                     <small>Follow my journey</small>
