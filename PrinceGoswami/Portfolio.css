@@ -804,6 +804,12 @@ section {
     background: var(--accent-light);
 }
 
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 /* Single column wrapper */
 .contact-column {
     display: flex;

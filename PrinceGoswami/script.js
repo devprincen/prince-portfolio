@@ -41,7 +41,7 @@ function setActive() {
     sections.forEach(sec => {
         if (window.scrollY >= sec.offsetTop - 150) cur = sec.id;
     });
-    
+
     links.forEach(a => {
         a.classList.toggle('active', a.getAttribute('href') === '#' + cur);
     });
