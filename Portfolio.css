@@ -83,6 +83,7 @@ body.sidebar-collapsed .sidebar-open-btn {
     z-index: 100;
     box-shadow: 4px 0 24px rgba(108, 99, 255, 0.04);
     transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
 }
 
 body.sidebar-collapsed .sidebar {
@@ -221,6 +222,7 @@ nav ul li a.active::before {
 }
 
 .sidebar-footer {
+    padding-top: 1rem;
     margin-top: auto;
     font-size: 0.67rem;
     color: var(--text-light);
@@ -230,6 +232,7 @@ nav ul li a.active::before {
 main {
     margin-left: var(--sidebar-w);
     flex: 1;
+    min-width: 0;
     transition: margin-left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -279,6 +282,7 @@ section {
 
 .home-left {
     flex: 1;
+    min-width: 0;
 }
 
 .home-greeting {
@@ -296,10 +300,11 @@ section {
     width: 24px;
     height: 2px;
     background: var(--accent);
+    flex-shrink: 0;
 }
 
 .home-name {
-    font-size: clamp(2.2rem, 4vw, 3.4rem);
+    font-size: clamp(2rem, 4vw, 3.4rem);
     font-weight: 800;
     line-height: 1.1;
     letter-spacing: -0.03em;
@@ -341,6 +346,8 @@ section {
 }
 
 .btn {
+    width: auto;
+    max-width: 100%;
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -367,13 +374,13 @@ section {
     box-shadow: 0 8px 24px rgba(108, 99, 255, 0.4);
 }
 
-.btn-outline {
+.btn-rocket {
     background: transparent;
     color: var(--accent);
     border: 2px solid var(--accent);
 }
 
-.btn-outline:hover {
+.btn-rocket:hover {
     background: var(--accent-light);
     transform: translateY(-2px);
 }
@@ -381,6 +388,7 @@ section {
 .home-right {
     flex-shrink: 0;
     position: relative;
+    min-width: 0;
 }
 
 .photo-frame {
@@ -413,7 +421,7 @@ section {
     justify-content: center;
     font-size: 5rem;
     overflow: hidden;
-    box-shadow: inset 0 0 40px rgba(0,0,0,0.1);
+    box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.1);
 }
 
 .float-badge {
@@ -459,7 +467,7 @@ section {
 }
 
 .sec-title {
-    font-size: clamp(1.8rem, 3vm, 2.6rem);
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
     font-weight: 800;
     letter-spacing: -0.03em;
     position: relative;
@@ -483,6 +491,8 @@ section {
     margin-top: 1.2rem;
     line-height: 1.7;
 }
+
+/*   ABOUT SECTION */
 
 #about {
     background: var(--bg);
@@ -579,6 +589,7 @@ section {
     text-transform: uppercase;
     letter-spacing: 0.1em;
     margin-bottom: 1rem;
+    color: var(--text);
 }
 
 .interests-chips {
@@ -635,8 +646,8 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
-    padding: 1.5rem 1rem;
+    gap: 12px;
+    padding: 1.5rem 0.5rem;
     background: var(--bg);
     border: 1px solid var(--border);
     border-radius: var(--radius);
@@ -659,6 +670,7 @@ section {
     align-items: center;
     justify-content: center;
     font-size: 1.6rem;
+    flex-shrink: 0;
 }
 
 .skill-name {
@@ -683,7 +695,7 @@ section {
 .ic-mysql   { background: #fff4ee; color: #00758f; }
 .ic-git     { background: #fff4ee; color: #f05032; }
 .ic-gh      { background: #f0f0f0; color: #24292e; }
-.ic-api     { background: #fffbe6; color: #b8860b; }
+.ic-apis    { background: #fffbe6; color: #b8860b; }
 .ic-postman { background: #fff4ee; color: #ef5b25; }
 
 #projects {
@@ -736,6 +748,7 @@ section {
     font-size: 1.4rem;
     color: var(--accent);
     margin-bottom: 1.2rem;
+    flex-shrink: 0;
 }
 
 .project-title {
@@ -772,6 +785,7 @@ section {
 .project-links {
     display: flex;
     gap: 12px;
+    flex-wrap: wrap;
 }
 
 .proj-link {
@@ -868,6 +882,7 @@ section {
     border: 1.5px solid var(--border);
     border-radius: var(--radius-sm);
     font-size: 0.88rem;
+    font-family: var(--font);
     color: var(--text);
     outline: none;
     transition: border-color 0.2s, box-shadow 0.2s;
@@ -883,7 +898,7 @@ section {
 .form-group textarea {
     min-height: 120px;
 }
- 
+
 .btn-submit {
     width: 100%;
     padding: 14px;
@@ -951,6 +966,8 @@ section {
     font-weight: 500;
     font-size: 0.88rem;
     transition: all 0.2s;
+    word-break: break-all;
+
 }
  
 .social-card:hover {
@@ -1009,42 +1026,64 @@ section {
     transform: translateY(28px);
     transition: opacity 0.7s ease, transform 0.7s ease;
 }
- 
+
 .reveal.visible {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* RESPONSIVE */
+
+@media (max-width: 1200px) {
+    section {
+        padding: 5rem 3rem;
+    }
  
-/* ══════════════════════════════════════════
-   RESPONSIVE
-══════════════════════════════════════════ */
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+ 
+    .about-grid {
+        gap: 2.5rem;
+    }
+}
+
 @media (max-width: 960px) {
+
     /* On mobile, sidebar starts hidden */
     .sidebar {
         transform: translateX(-100%);
     }
- 
+
     /* When opened on mobile via button */
     .sidebar.mobile-open {
         transform: translateX(0);
     }
- 
-    /* Always show the open button on mobile */
+
     .sidebar-open-btn {
         display: flex !important;
     }
- 
+
+    /* Hide open button when sidebar is open */
+    .sidebar.mobile-open ~ * .sidebar-open-btn,
+    body:has(.sidebar.mobile-open) .sidebar-open-btn {
+        display: none !important;
+    }
+
     main {
         margin-left: 0 !important;
     }
  
     section {
-        padding: 4rem 2rem;
+        padding: 5rem 1.5rem 4rem;
+        min-height: auto;
     }
  
     .home-inner {
         flex-direction: column-reverse;
         text-align: center;
+        gap: 2.5rem;
+        padding-top: 1rem;
     }
  
     .home-left {
@@ -1054,14 +1093,15 @@ section {
     }
  
     .home-greeting::before { display: none; }
- 
-    .about-grid        { grid-template-columns: 1fr; }
-    .projects-grid     { grid-template-columns: 1fr; }
- 
-    /* Contact already column, just make social cards single-col */
-    .social-cards      { grid-template-columns: 1fr; }
-    .contact-form-inner { grid-template-columns: 1fr; }
- 
+
+    .home-desc {
+        max-width: 100%;
+    }
+
+    .home-btns {
+        justify-content: center;
+    }
+
     .photo-frame {
         width: 220px;
         height: 250px;
@@ -1074,4 +1114,135 @@ section {
     }
  
     .badge-1, .badge-2 { display: none; }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+ 
+    /* Contact already column, just make social cards single-col */
+    .social-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-form-inner {
+        grid-template-columns: 1fr;
+    }
+
+    .sec-header {
+        margin-bottom: 2rem;
+    }
 }
+
+/* ── Small Mobile: up to 480px ── */
+@media (max-width: 480px) {
+ 
+    section {
+        padding: 4.5rem 1rem 3rem;
+    }
+ 
+    .home-name {
+        font-size: 2rem;
+    }
+ 
+    .home-title {
+        font-size: 0.88rem;
+        justify-content: center;
+    }
+ 
+    .home-desc {
+        font-size: 0.85rem;
+    }
+ 
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.8rem;
+    }
+ 
+    .photo-frame {
+        width: 180px;
+        height: 200px;
+    }
+ 
+    .photo-inner {
+        width: 140px;
+        height: 140px;
+        font-size: 3rem;
+    }
+ 
+    .skills-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.8rem;
+    }
+ 
+    .skill-item {
+        padding: 1rem 0.5rem;
+    }
+ 
+    .skill-icon {
+        width: 38px;
+        height: 38px;
+        font-size: 1.3rem;
+    }
+ 
+    .project-card {
+        padding: 1.5rem;
+    }
+ 
+    .contact-form-card,
+    .contact-info {
+        padding: 1.5rem;
+    }
+ 
+    .social-card {
+        font-size: 0.82rem;
+        padding: 12px 14px;
+        gap: 10px;
+    }
+ 
+    /* Sec title smaller */
+    .sec-title {
+        font-size: 1.6rem;
+    }
+ 
+    .edu-card {
+        padding: 1.2rem;
+    }
+ 
+    .about-interests {
+        padding: 1.2rem;
+    }
+}
+ 
+/* ── Very Small Mobile: up to 360px ── */
+@media (max-width: 360px) {
+ 
+    section {
+        padding: 4rem 0.8rem 2.5rem;
+    }
+ 
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+ 
+    .home-btns {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+ 
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+ 
+    .social-card {
+        word-break: break-word;
+    }
+}
+ 

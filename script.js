@@ -9,6 +9,7 @@ function closeSidebar() {
     if (isMobile()) {
         sidebar.classList.remove('mobile-open');
         overlay.classList.remove('active');
+        openBtn.style.display = 'flex';
     } else {
         document.body.classList.add('sidebar-collapsed');
     }
@@ -18,8 +19,10 @@ function openSidebar() {
     if (isMobile()) {
         sidebar.classList.add('mobile-open');
         overlay.classList.add('active');
+        openBtn.style.display = 'none';
     } else {
         document.body.classList.remove('sidebar-collapsed');
+
     }
 }
 
@@ -33,13 +36,26 @@ document.querySelectorAll('nav a').forEach(a => {
     });
 });
 
+window.addEventListener('resize', () => {
+    if (!isMobile()) {
+        sidebar.classList.remove('mobile-open');
+        overlay.classList.remove('active');
+
+    if(!document.body.classList.contains('sidebar-collapsed')) {
+        sidebar.style.transform = '';
+        }
+    }
+});
+
 const sections = document.querySelectorAll('section[id]');
 const links    = document.querySelectorAll('nav a');
 
 function setActive() {
     let cur = '';
     sections.forEach(sec => {
-        if (window.scrollY >= sec.offsetTop - 150) cur = sec.id;
+        if (window.scrollY >= sec.offsetTop - 200){
+            cur = sec.id;
+        }
     });
 
     links.forEach(a => {
@@ -53,15 +69,21 @@ setActive();
 links.forEach(a => {
     a.addEventListener('click', e => {
         e.preventDefault();
-        const t = document.querySelector(a.getAttribute('href'));
-        if (t) t.scrollIntoView({ behavior: 'smooth' });
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+        }
     });
 });
 
 const reveals = document.querySelectorAll('.reveal');
-const obs = new IntersectionObserver(entries => {
+
+const revealObserver = new IntersectionObserver(entries => {
     entries.forEach(e => {
-        if (e.isIntersecting) e.target.classList.add('visible');
+        if (e.isIntersecting) {
+            e.target.classList.add('visible');
+        }
     });
 }, { threshold: 0.1 });
-reveals.forEach(el => obs.observe(el));
+
+reveals.forEach(el => revealObserver.observe(el));
